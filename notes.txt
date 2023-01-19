@@ -1,0 +1,60 @@
+---------------- Note App ------------------
+
+source video : javascript king youtube channel
+video title : HTML CSS Javascript projects for beginners 2023
+
+=============================================
+
+In this project we've got few functions namely:
+
+1. createNote(id,content) -> creates note(textarea element), adds "note" class to it, adds placeholder "Empty Note", etc. important thing is here we add "dblclick","input" eventlisteners. returns note_el.
+2. deleteNote(id,note_el) -> simply deletes the note
+3. updateNote(id,content) -> simiply updates the note
+4. getNotes() -> returns notes array from localserver
+5. addNote() -> initializes the noteObj and generates random id to it.
+6. saveNote(notes) -> saves notes into the local server
+
+Note App operations: 
+
+- create a note on clicking on button
+- delete the note on double clicking the note after confirming
+- update the note on editing the note on local server
+- on refreshing the page, notes must not be lost
+
+
+getNotes().forEach((note)=>{});
+// here foreach is used to iterate through the notes array which we got from getNotes() function. here note is a variable for representing the element in each iteration.
+
+const warning = confirm("Do you want to Delete the note?");
+// asks question with "ok" and "cancel" buttons. assigns boolean value to the warning constant above.
+
+note_el.addEventListener("dblclick",()=>{});
+// function triggers when double click event occurs
+
+note_el.addEventListener("input",()=>{});
+// function triggers when the value in textarea is changed or updated or edited
+
+const notes = getNotes().filter((note)=>note.id!=id);
+// array with note.id values not equal to id value is stored into notes constant i.e. note with id = "id" has been removed from the original notes array/list.
+
+const target = notes.filter((note)=>note.id == id)[0];
+// first element of the array with note.id == id has been assigned to the target constant.
+
+
+return JSON.parse(localStorage.getItem("note-app") || "[]");
+// all the data in local storage is stored in the form of strings. First we need to get the data from local storage using "localstorage.get([name])", then we need to convert the string format to json using "JSON.parse()". At last we should return the json formatted data. and don't forget if the localstorage is empty we should return "[]".
+
+const noteObj = {
+        id: Math.floor(Math.random()*100000),
+        content: ""
+    };
+// Object is stored in this way
+
+container_el.insertBefore(note_el,button_el);
+// insert before used in this way, first parameter is the element to be added and second parameter is the element before which the first element is to be placed.
+
+notes.push(noteObj);
+// pushing noteObj[object] into the array
+
+localStorage.setItem("note-app",JSON.stringify(notes));
+// since we know that local storage stores strigified data, we should convert json formatted data to stringified data, this can be done using "JSON.stringify()"
